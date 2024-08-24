@@ -1,0 +1,44 @@
+<div class="shadow border p-4">
+    @if(editUserId){
+        <h2 class="text-xl font font-semibold">UPDATE USER</h2>
+    }
+    @else {
+        <h2 class="text-xl font font-semibold">ADD USER</h2>
+    }
+    <form [formGroup]="userForm">
+        <div class="flex flex-wrap">
+            <mat-form-field class="w-full">
+                <mat-label>Name</mat-label>
+                <input type="text" matInput formControlName="name">
+            </mat-form-field>
+            <mat-form-field class="w-full">
+                <mat-label>Email</mat-label>
+                <input type="text" matInput formControlName="email">
+            </mat-form-field>
+            <mat-form-field class="w-full">
+                <mat-label>Age</mat-label>
+                <input type="number" matInput formControlName="age">
+            </mat-form-field>
+            <mat-form-field class="w-full">
+                <mat-label>Address</mat-label>
+                <input type="text" matInput formControlName="address">
+            </mat-form-field>
+            <mat-form-field class="w-full">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput formControlName="password">
+            </mat-form-field>
+        </div>
+        <div class="flex justify-center">
+            @if(editUserId){
+                <button mat-raised-button color="primary" (click)="updateUser()"> 
+                    UPDATE
+                </button>
+            }
+            @else {
+                <button mat-raised-button color="primary" (click)="addUser()"> 
+                    Add
+                </button>
+            }               
+        </div>
+    </form>
+</div>
