@@ -5,31 +5,29 @@
             Add User
         </button>
     </div>
-    <table>
+    <table class="responsive-table">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Age</th>
                 <th>Address</th>
-                <th></th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            @for (User of users; track $index) {
-                <tr>
-                    <td>{{User.name}}</td>
-                    <td>{{User.email}}</td>
-                    <td>{{User.age}}</td>
-                    <td>{{User.address}}</td>
-                    <td>
-                        <button mat-raised-button color="accent" class="mr-4" [routerLink]="'/users/'+ User._id">
-                            Edit User
-                        </button>
-                        <button mat-raised-button color="warn" (click)="delete(User._id!)">Delete User</button>
-                    </td>
-                </tr>
-            }
+            <tr *ngFor="let user of users">
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.age }}</td>
+                <td>{{ user.address }}</td>
+                <td>
+                    <button mat-raised-button color="accent" class="mr-4" [routerLink]="'/users/' + user._id">
+                        Edit User
+                    </button>
+                    <button mat-raised-button color="warn" (click)="delete(user._id)">Delete User</button>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

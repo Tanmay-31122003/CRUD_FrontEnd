@@ -9,3 +9,14 @@ table{
         border: 1px solid grey;
     }
 }
+
+.responsive-table {
+    width: 100%;
+    overflow-x: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .responsive-table {
+        overflow-x: scroll;
+    }
+}

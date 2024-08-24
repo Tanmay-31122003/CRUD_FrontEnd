@@ -9,9 +9,9 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [MatButtonModule, RouterLink],
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css'] // corrected property name
+  styleUrls: ['./users.component.css'] 
 })
-export class UsersComponent implements OnInit { // implements OnInit added
+export class UsersComponent implements OnInit {
   users: User[] = [];
   userService = inject(UserService);
 
