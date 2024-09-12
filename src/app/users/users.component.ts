@@ -17,6 +17,10 @@ export class UsersComponent implements OnInit {
   userService = inject(UserService);
 
   ngOnInit() {
+    this.getServerData();
+  }
+
+  private getServerData() {
     this.userService.getUsers().subscribe((result) => {
       this.users = result;
       console.log(this.users);
