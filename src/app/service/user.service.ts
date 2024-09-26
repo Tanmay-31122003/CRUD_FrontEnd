@@ -8,8 +8,8 @@ import User from '../types/user';
   providedIn: 'root'
 })
 export class UserService {
-  //private apiUrl = "https://crud-server-green.vercel.app";
-  private apiUrl = "http://localhost:3000";
+  private apiUrl = "https://crud-server-green.vercel.app";
+  //private apiUrl = "http://localhost:3000";
   httpClient = inject(HttpClient);
 
   getUsers(): Observable<User[]> {
