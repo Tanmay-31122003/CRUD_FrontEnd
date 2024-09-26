@@ -38,29 +38,39 @@ export class UserFormComponent {
     }
   }
 
-  addUser(){
-    if(this.userForm.invalid)
-    {
-      alert("Please provide all field with valid data");
+  addUser() {
+    if (this.userForm.invalid) {
+      alert("Please provide all fields with valid data.");
       return;
     }
-    const model:User = this.userForm.value;
-    this.userService.addUser(model).subscribe(result=>{
-      alert("User added Successfully !"); 
-      this.router.navigateByUrl("/")   
-    })
-  }
-
-  updateUser(){
-    if(this.userForm.invalid)
-      {
-        alert("Please provide all field with valid data");
-        return;
+    const model: User = this.userForm.value;
+    this.userService.addUser(model).subscribe({
+      next: () => {
+        alert("User added successfully!");
+        this.router.navigateByUrl("/");
+      },
+      error: (err) => {
+        alert("Failed to add user.");
+        console.error(err);
       }
-      const model:User = this.userForm.value;
-      this.userService.updateUser(this.editUserId,model).subscribe((result)=>{
-        alert('User Update Successfully.');
-        this.router.navigateByUrl('/');
-      })
+    });
   }
+  
+  updateUser() {
+    if (this.userForm.invalid) {
+      alert("Please provide all fields with valid data.");
+      return;
+    }
+    const model: User = this.userForm.value;
+    this.userService.updateUser(this.editUserId, model).subscribe({
+      next: () => {
+        alert("User updated successfully!");
+        this.router.navigateByUrl("/");
+      },
+      error: (err) => {
+        alert("Failed to update user.");
+        console.error(err);
+      }
+    });
+  }  
 }

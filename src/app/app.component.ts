@@ -12,4 +12,5 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  title = ""
 }

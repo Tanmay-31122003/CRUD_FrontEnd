@@ -28,7 +28,7 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  delete(id?: string) { // Make id optional to handle undefined case
+  delete(id?: string) {
     if (!id) {
       console.error('User ID is undefined');
       return;
@@ -36,10 +36,16 @@ export class UsersComponent implements OnInit {
     
     const ok = confirm("Are you sure you want to delete this user?");
     if (ok) {
-      this.userService.deleteUser(id).subscribe(() => {
-        alert("User deleted successfully.");
-        this.users = this.users.filter(u => u._id !== id);
+      this.userService.deleteUser(id).subscribe({
+        next: () => {
+          alert("User deleted successfully.");
+          this.users = this.users.filter(u => u._id !== id);
+        },
+        error: (err) => {
+          alert("Failed to delete user.");
+          console.error(err);
+        }
       });
     }
-  }
+  }  
 }
